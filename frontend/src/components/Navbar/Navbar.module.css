@@ -1,0 +1,249 @@
+.header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  background: rgb(16 42 53 / 94%);
+  border-bottom: 1px solid var(--color-line);
+  box-shadow: 0 3px 16px rgb(0 0 0 / 16%);
+  backdrop-filter: blur(12px);
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  width: min(var(--container), calc(100% - 48px));
+  min-height: 82px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-inline: auto;
+}
+
+.brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.brandMark {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  color: var(--color-page);
+  background: var(--color-teal);
+  border-radius: 12px;
+  font-size: 19px;
+}
+
+.brandWords {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.brandWords span {
+  color: var(--color-teal);
+}
+
+.navigation,
+.links,
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  flex: 1;
+  justify-content: flex-end;
+  gap: clamp(18px, 2.5vw, 36px);
+}
+
+.links {
+  gap: clamp(14px, 2vw, 27px);
+}
+
+.navLink {
+  padding-block: 10px;
+  color: #bed0d4;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.navLink:hover,
+.active {
+  color: var(--color-teal);
+}
+
+.actions {
+  gap: 16px;
+}
+
+.searchToggle,
+.menuToggle {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: var(--color-ink);
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.searchToggle:hover {
+  background: var(--color-mint);
+}
+
+.subscribe {
+  padding: 11px 17px;
+  color: var(--color-page);
+  background: var(--color-teal);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.subscribe:hover {
+  color: var(--color-page);
+  background: #78ddca;
+}
+
+.accountLink,
+.accountButton {
+  padding: 8px 0;
+  color: var(--color-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.accountLink:hover,
+.accountButton:hover {
+  color: var(--color-teal);
+}
+
+.logoutError {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  padding: 6px 10px;
+  color: #ff9a9a;
+  background: var(--color-surface);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.searchForm {
+  position: absolute;
+  top: calc(100% - 4px);
+  right: 0;
+  display: flex;
+  width: min(390px, 100%);
+  padding: 9px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 9px;
+  box-shadow: var(--shadow-card);
+}
+
+.searchForm input {
+  width: 100%;
+  min-width: 0;
+  padding: 9px 11px;
+  color: var(--color-ink);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.searchForm button {
+  width: 40px;
+  flex: 0 0 auto;
+  color: var(--color-page);
+  background: var(--color-teal);
+  border: 0;
+  border-radius: 6px;
+}
+
+.menuToggle {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .inner {
+    min-height: 72px;
+  }
+
+  .menuToggle {
+    display: grid;
+    margin-left: auto;
+    font-size: 23px;
+  }
+
+  .navigation {
+    position: absolute;
+    top: 100%;
+    right: -24px;
+    left: -24px;
+    display: none;
+    align-items: stretch;
+    padding: 15px 24px 22px;
+    background: var(--color-page);
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: 0 12px 20px rgb(0 0 0 / 20%);
+  }
+
+  .navigation.open {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .links {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navLink {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .searchForm {
+    position: static;
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .inner {
+    width: calc(100% - 36px);
+  }
+
+  .navigation {
+    right: -18px;
+    left: -18px;
+    padding-inline: 18px;
+  }
+}

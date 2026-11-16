@@ -43,6 +43,26 @@ For MongoDB Atlas, create a database user, allow the application host in the Atl
 
 The frontend restores the current session from `/auth/me`; it does not save credentials or JWTs in browser storage. The admin-only page at `/admin` requires an account with the backend admin role. Admins can manage editorial content, companies, and jobs; review contact messages and newsletter subscribers; and send newsletter campaigns when SMTP is configured. Community membership links to the hosted THT+ and community services.
 
+## Deploying to Vercel
+
+Deploy this monorepo as two Vercel projects connected to the same repository:
+
+1. Create the frontend project with **Root Directory** set to `frontend`. Use the Vite preset, `npm run build`, and `dist` as the output directory. Add `VITE_API_URL=https://YOUR-API-PROJECT.vercel.app/api/v1` as an environment variable for Production (and Preview if needed). The `frontend/vercel.json` rewrite supports client-side routes such as `/admin` and `/directory`.
+2. Create a second project with **Root Directory** set to `backend`. The API is served by `backend/api/[...path].js`; it connects to MongoDB on demand and reuses the connection while the function instance stays warm.
+3. Configure the backend project's Vercel environment variables for Production:
+
+   - Required: `MONGO_URI`, `JWT_SECRET` (at least 32 random characters), and `FRONTEND_URL` (the exact deployed frontend origin, without a path).
+   - Cookies/proxy: `NODE_ENV=production`, `COOKIE_SECURE=true`, `COOKIE_SAME_SITE=none`, and `TRUST_PROXY=1`.
+   - Optional initial admin: `ADMIN_NAME`, `ADMIN_EMAIL`, and a unique `ADMIN_PASSWORD` (at least 12 characters). These values do not create an account by themselves; run the seed script once against the production database from a trusted machine.
+   - Optional email: `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_FROM_EMAIL`, optional `SMTP_USER`/`SMTP_PASSWORD`, and `CONTACT_EMAIL`.
+   - Optional media: all three `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET`, or none.
+
+   Add variables separately for Preview only if you intend preview deployments to access a database; use a separate non-production database for previews.
+4. In MongoDB Atlas, allow network access from Vercel (Atlas may require `0.0.0.0/0` because Vercel function egress IPs are not fixed on standard plans). Use a strong database user password and a least-privilege database account.
+5. After both projects deploy, verify `https://YOUR-API-PROJECT.vercel.app/api/v1/health`, then browse the frontend and test login/session restoration. If you add a custom frontend domain, update the backend `FRONTEND_URL` to that exact origin and redeploy the backend.
+
+The frontend and API are on different Vercel origins, so the backend uses secure cross-site cookies (`COOKIE_SAME_SITE=none`). Keep `VITE_API_URL` pointed at the API project, and do not put backend secrets in frontend variables. Never commit `.env` files or Vercel secrets.
+
 ## Scripts and checks
 
 - `npm run dev` — Node watch mode

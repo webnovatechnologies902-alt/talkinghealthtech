@@ -1,0 +1,88 @@
+.card {
+  overflow: hidden;
+  height: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.imageLink {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 1.62;
+  background: var(--color-mint);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 250ms ease;
+}
+
+.card:hover .image {
+  transform: scale(1.025);
+}
+
+.content {
+  padding: 20px 21px 22px;
+}
+
+.meta,
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  color: #a9bdc2;
+  font-size: 12px;
+}
+
+.category {
+  color: var(--color-teal);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.content h3 {
+  margin: 13px 0 9px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.32;
+}
+
+.content h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.content h3 a:hover {
+  color: var(--color-teal);
+}
+
+.content > p {
+  margin-bottom: 17px;
+  color: var(--color-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.byline {
+  padding-top: 13px;
+  border-top: 1px solid var(--color-line);
+}
+
+.featured .content h3 {
+  font-size: clamp(23px, 2.4vw, 31px);
+}
+
+.featured .imageLink {
+  aspect-ratio: 1.75;
+}

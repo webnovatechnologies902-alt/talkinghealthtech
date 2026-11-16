@@ -1,0 +1,157 @@
+.footer {
+  color: #bed0d4;
+  background: #0b2029;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1fr 1.25fr;
+  gap: 48px;
+  padding-block: 60px 54px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.brand > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand > span:last-child span {
+  color: var(--color-teal);
+}
+
+.brandMark {
+  display: grid;
+  width: 37px;
+  height: 37px;
+  place-items: center;
+  color: #0b2029;
+  background: var(--color-teal);
+  border-radius: 11px;
+}
+
+.brandColumn > p {
+  max-width: 275px;
+  margin: 18px 0;
+  font-size: 13px;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+}
+
+.socials a {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: white;
+  border: 1px solid rgb(255 255 255 / 23%);
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: #0b2029;
+  background: var(--color-teal);
+}
+
+.footerLinks h2,
+.footerNote h2 {
+  margin-bottom: 17px;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+.footerLinks {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footerLinks a,
+.footerNote a {
+  color: #c3d1d7;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.footerLinks a:hover,
+.footerNote a:hover {
+  color: var(--color-teal);
+}
+
+.noteIcon {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  margin-bottom: 16px;
+  place-items: center;
+  color: var(--color-teal);
+  background: rgb(86 200 181 / 12%);
+  border-radius: 10px;
+}
+
+.footerNote h2 {
+  margin-bottom: 8px;
+}
+
+.footerNote p {
+  margin-bottom: 13px;
+  font-size: 13px;
+}
+
+.footerNote a {
+  color: var(--color-teal);
+  font-weight: 700;
+}
+
+.bottom {
+  border-top: 1px solid rgb(255 255 255 / 13%);
+}
+
+.bottomInner {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 17px;
+  font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 38px;
+  }
+}
+
+@media (max-width: 575px) {
+  .main {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 20px;
+    padding-block: 48px 40px;
+  }
+
+  .brandColumn {
+    grid-column: 1 / -1;
+  }
+
+  .bottomInner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

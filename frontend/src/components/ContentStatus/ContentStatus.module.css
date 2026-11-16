@@ -1,0 +1,64 @@
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.skeletonCard {
+  display: grid;
+  gap: 13px;
+  padding: 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}
+
+.skeletonImage,
+.skeletonLine {
+  display: block;
+  background: linear-gradient(90deg, var(--color-surface-raised), var(--color-line), var(--color-surface-raised));
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+  border-radius: 6px;
+}
+
+.skeletonImage {
+  aspect-ratio: 1.62;
+}
+
+.skeletonLine {
+  height: 13px;
+}
+
+.shortLine {
+  width: 65%;
+}
+
+.message {
+  display: grid;
+  min-height: 120px;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 24px;
+  color: var(--color-body);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  text-align: center;
+}
+
+.message p {
+  margin: 0;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonImage,
+  .skeletonLine {
+    animation: none;
+  }
+}

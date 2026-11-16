@@ -1,0 +1,85 @@
+.authPage {
+  display: grid;
+  min-height: 65vh;
+  padding-block: 64px;
+  place-items: center;
+}
+
+.authCard {
+  width: min(100%, 480px);
+  padding: clamp(24px, 5vw, 42px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--color-teal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.authCard h1 {
+  margin-bottom: 12px;
+  font-size: clamp(30px, 5vw, 40px);
+}
+
+.intro,
+.switchMode {
+  color: var(--color-body);
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+  color: var(--color-ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form input {
+  width: 100%;
+  padding: 12px 13px;
+  color: var(--color-ink);
+  background: var(--color-page);
+  border: 1px solid var(--color-line);
+  border-radius: 7px;
+  font-weight: 400;
+}
+
+.form button {
+  justify-content: center;
+}
+
+.error {
+  margin: 0;
+  color: #ff9a9a;
+  font-size: 13px;
+}
+
+.switchMode {
+  margin: 20px 0 0;
+  font-size: 13px;
+}
+
+.switchMode a {
+  color: var(--color-teal);
+  font-weight: 700;
+}
+
+.passwordHeading {
+  margin: 30px 0 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+  font-size: 21px;
+}

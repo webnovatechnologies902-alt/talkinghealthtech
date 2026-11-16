@@ -1,0 +1,47 @@
+.heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(30px, 3vw, 40px);
+}
+
+.description {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: var(--color-body);
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--color-teal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+}
+
+.center .description {
+  margin-inline: auto;
+}
+
+.action {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 640px) {
+  .heading {
+    align-items: start;
+    flex-direction: column;
+  }
+}
