@@ -48,7 +48,7 @@ The frontend restores the current session from `/auth/me`; it does not save cred
 Deploy this monorepo as two Vercel projects connected to the same repository:
 
 1. Create the frontend project with **Root Directory** set to `frontend`. Use the Vite preset, `npm run build`, and `dist` as the output directory. Add `VITE_API_URL=https://YOUR-API-PROJECT.vercel.app/api/v1` as an environment variable for Production (and Preview if needed). The `frontend/vercel.json` rewrite supports client-side routes such as `/admin` and `/directory`.
-2. Create a second project with **Root Directory** set to `backend`. The API is served by `backend/api/[...path].js`; it connects to MongoDB on demand and reuses the connection while the function instance stays warm.
+2. Create a second project with **Root Directory** set to `backend` and **Framework Preset** set to **Other** (do not use Vercel's Express preset for this function-based API). The API is served by `api/[...path].js`; it connects to MongoDB on demand and reuses the connection while the function instance stays warm.
 3. Configure the backend project's Vercel environment variables for Production:
 
    - Required: `MONGO_URI`, `JWT_SECRET` (at least 32 random characters), and `FRONTEND_URL` (the exact deployed frontend origin, without a path).
